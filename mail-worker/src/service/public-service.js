@@ -94,6 +94,10 @@ const publicService = {
 
 	},
 
+		async emailListNoAuth(c, params) {
+		// 与 emailList 完全相同的逻辑，但不经过鉴权中间件
+		return this.emailList(c, params);
+	},
 	async addUser(c, params) {
 		const { list } = params;
 
