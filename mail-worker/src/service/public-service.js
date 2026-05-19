@@ -94,9 +94,21 @@ const publicService = {
 
 	},
 
-		async emailListNoAuth(c, params) {
+	async emailListNoAuth(c, params) {
 		// 与 emailList 完全相同的逻辑，但不经过鉴权中间件
 		return this.emailList(c, params);
+	},
+	async domainListNoAuth(c) {
+		let domainList = c.env.domain;
+		if (typeof domainList === 'string') {
+			try {
+				domainList = JSON.parse(domainList);
+			} catch (error) {
+				return [];
+			}
+		}
+		// 跳过前两个域名，返回其余的
+		return domainList.slice(2);
 	},
 	async addUser(c, params) {
 		const { list } = params;
