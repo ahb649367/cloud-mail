@@ -17,7 +17,7 @@ app.post('/public/addUser', async (c) => {
 	return c.json(result.ok());
 });
 
-app.post('/public/emailSelect', async (c) => {
+app.post('/select/emailSelect', async (c) => {
 	const list = await publicService.emailListNoAuth(c, await c.req.json());
 	return c.json(result.ok(list));
 });
