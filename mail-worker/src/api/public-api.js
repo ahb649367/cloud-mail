@@ -21,3 +21,8 @@ app.post('/select/emailSelect', async (c) => {
 	const list = await publicService.emailListNoAuth(c, await c.req.json());
 	return c.json(result.ok(list));
 });
+
+app.post('/select/domainList', async (c) => {
+	const list = await publicService.domainListNoAuth(c, await c.req.json());
+	return c.json(result.ok(list));
+});
